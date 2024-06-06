@@ -1,7 +1,7 @@
 import LeftSideBar from "@/components/LeftSideBar";
 import MobileNav from "@/components/MobileNav";
 import RightSideBar from "@/components/RightSideBar";
-import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster"
 import Image from "next/image";
 export default function RootLayout({
   children,
@@ -19,12 +19,11 @@ export default function RootLayout({
                         <MobileNav />
                     </div>
                     <div className="flex flex-col md:pd-14">
-                        Toaster
+                    <Toaster />
                         {children}
                     </div>
                 </div>
             </section>
-            
             <RightSideBar />
         </main>
     </div>
