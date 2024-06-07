@@ -10,17 +10,19 @@ import Image from 'next/image'
 import { useToast } from './ui/use-toast'
 import { title } from 'process'
 import { generateUploadUrl } from '@/convex/files'
-import {useUploadFiles} from '@xixixao/uploadstuff/react'
-import { useMutation } from 'convex/react'
+import { useUploadFiles } from '@xixixao/uploadstuff/react'
+import { useAction, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
+import { v4 as uuidv4 } from 'uuid';
 const GenerateThumbnail = (props: GenerateThumbnailProps) => {
   const [isAiThumbnail, setIsAiThumbnail] = useState(false)
   const [isImageLoading, setIsImageLoading] = useState(false)
   const imageRef = useRef<HTMLInputElement>(null)
   const generateUploadUrl = useMutation(api.files.generateUploadUrl)
   const getImageUrl = useMutation(api.podcast.getUrl)
-  const {startUpload} = useUploadFiles(generateUploadUrl)
+  const { startUpload } = useUploadFiles(generateUploadUrl)
   const { toast } = useToast()
+  const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction)
   const handleImage = async (blob: Blob, fileName: string) => {
     setIsImageLoading(true)
     props.setImage('')
@@ -41,21 +43,30 @@ const GenerateThumbnail = (props: GenerateThumbnailProps) => {
       toast({ title: 'Error generating thumbnail', variant: 'destructive' })
     }
   }
+
   const generateImage = async () => {
+    try {
+      const respone = await handleGenerateThumbnail({ prompt: props.imagePrompt })
+      const blob = new Blob([respone], { type: 'image/png' })
+      handleImage(blob, `thumbnail-${uuidv4()}`)
+    } catch (error) {
+      console.log(error)
+      toast({ title: 'Error generating thumbnail', variant: 'destructive' })
+    }
 
   }
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      e.preventDefault()
-      try {
-        const files = e.target.files
-        if(!files) return
-        const file = files[0]
-        const blob = await file.arrayBuffer().then((ab) => new Blob([ab]))
-        handleImage(blob, file.name)
-      } catch (error) {
-        console.log(error)
-        toast({ title: 'Error uploading image', variant: 'destructive' })
-      }
+    e.preventDefault()
+    try {
+      const files = e.target.files
+      if (!files) return
+      const file = files[0]
+      const blob = await file.arrayBuffer().then((ab) => new Blob([ab]))
+      handleImage(blob, file.name)
+    } catch (error) {
+      console.log(error)
+      toast({ title: 'Error uploading image', variant: 'destructive' })
+    }
   }
   return (
     <>
