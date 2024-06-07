@@ -56,7 +56,7 @@ const useGeneratePodcast = (props: GeneratePodcastProps) =>{
         }
     }
     return {
-        isGenerating: false,
+        isGenerating,
         generatePodcast
     }
 }
@@ -76,9 +76,9 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
             <div className='mt-5 w-full max-w-[200px]'>
                 <Button type="submit" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={generatePodcast}>
                     {isGenerating ? (
-                        <>
-                            <Loader size={20} className="animate-spin mr-3" />
+                        <>    
                             Generating...
+                            <Loader size={20} className="animate-spin ml-3" />
                         </>
                     ) : (
                         'Generate'
