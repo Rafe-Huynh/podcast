@@ -9,6 +9,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "charming-ferret-993.convex.cloud"
+            },
+            {   
+                protocol: "https",
+                hostname: "img.clerk.com"
             }
         ]
     }
