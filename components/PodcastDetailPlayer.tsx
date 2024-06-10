@@ -1,10 +1,13 @@
 "use client";
 import { PodcastDetailPlayerProps } from '@/types'
-import React from 'react'
+import React, { useState } from 'react'
 import LoaderSpinner from './ui/LoaderSpinner'
 import Image from 'next/image'
 import { useRouter } from "next/navigation";
 import { Button } from './ui/button';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { useToast } from './ui/use-toast';
 const PodcastDetailPlayer = ({ audioUrl,
     podcastTitle,
     author,
@@ -16,6 +19,24 @@ const PodcastDetailPlayer = ({ audioUrl,
     authorImageUrl,
     authorId,}:PodcastDetailPlayerProps) => {
     const router = useRouter()
+    const {toast} = useToast()
+    const [isDeleting, setIsDeleting] = useState(false)
+    const deletePodcast = useMutation(api.podcast.deletePodcast)
+    const handleDelete = async () => {
+      try {
+        await deletePodcast({podcastId, imageStorageId, audioStorageId});
+        toast({
+          title: "Podcast deleted",
+        });
+        router.push("/");
+      } catch (error) {
+        console.log(error, "Error deleting podcast");
+      toast({
+        title: "Error deleting podcast",
+        variant: "destructive",
+      });
+      }
+    }
     if(!imageUrl || !authorImageUrl){
         return <LoaderSpinner />
     }
@@ -72,8 +93,21 @@ const PodcastDetailPlayer = ({ audioUrl,
             height={30}
             alt="Three dots icon"
             className="cursor-pointer"
-            //onClick={() => setIsDeleting((prev) => !prev)}
+            onClick={() => setIsDeleting((prev) => !prev)}
           />
+          {
+            isDeleting && (
+              <div className='absolute -left-32 -top-2 z-10 flex w-32 cursor-pointer justify-center gap-2 rounded-md bg-black-6 py-1.5 hover:bg-black-2' onClick={handleDelete}>
+                 <Image
+                src="/icons/delete.svg"
+                width={16}
+                height={16}
+                alt="Delete icon"
+              />
+              <h2 className="text-16 font-normal text-white-1">Delete</h2>
+              </div>
+            )
+          }
         </div>
         )}
 
