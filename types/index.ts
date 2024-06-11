@@ -111,7 +111,7 @@ export interface PodcastCardProps {
 }
 
 export interface CarouselProps {
-  fansLikeDetail: TopPodcastersProps[];
+  topPodcast: TopPodcastersProps[];
 }
 
 export interface ProfileCardProps {

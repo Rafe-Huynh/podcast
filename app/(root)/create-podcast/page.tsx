@@ -49,7 +49,7 @@ const CreatePodcast = () => {
 
     const[audioStorageId, setAudioStorageId] = useState<Id<"_storage">| null>(null)
     const[audioUrl, setAudioUrl] = useState('')
-    const[AudioDuration, setAudioDuration] = useState(0)
+    const[audioDuration, setAudioDuration] = useState(0)
 
     const[voiceType,setVoiceType] = useState<string | null >(null)
     const[voicePrompt, setVoicePrompt] = useState('')
@@ -86,7 +86,7 @@ const CreatePodcast = () => {
                 imagePrompt,
                 voicePrompt,
                 views: 0,
-                AudioDuration,
+                audioDuration,
                 audioStorageId: audioStorageId!,
                 imageStorageId: imageStorageId!,
             })
