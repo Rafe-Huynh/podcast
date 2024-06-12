@@ -30,6 +30,7 @@ const PodcastPlayer = () => {
       }
     }
     const forward = () => {
+      //tyscript has to check all these things exist, if not just the last arg
       if(audioRef.current && audioRef.current.currentTime && audioRef.current.duration && audioRef.current.currentTime + 5 < audioRef.current.duration)
         audioRef.current.currentTime += 5
     }
