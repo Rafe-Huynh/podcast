@@ -33,7 +33,7 @@ const PodcastDetails = ({params:{podcastId} }: {params: {podcastId: Id<'podcasts
       <PodcastDetailPlayer 
       isOwner = {isOwner}
       {...podcast}
-      podcastid = {podcast._id}
+      podcastId = {podcast._id}
       />
       <p className='text-white-2 text 16 pb-8 pt-[45px] font-medium max-md:text-center'>{podcast?.podcastDescription}</p>
       <div className='flex flex-col gap-8'>

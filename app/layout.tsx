@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import ConvexClearkProvider from "./providers/ConvexClearkProvider";
-
+import AudioProvider from "./providers/AudioProvider";
+const manrope = Manrope({subsets: ['latin']})
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,9 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      <ConvexClearkProvider>{children}</ConvexClearkProvider></body>
-    </html>
+    <ConvexClearkProvider>
+      <html lang="en">
+        <AudioProvider>
+        <body className={manrope.className}>
+          {children}</body>
+          </AudioProvider>
+      </html>
+    </ConvexClearkProvider>
   );
 }
