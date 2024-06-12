@@ -10,13 +10,14 @@ import React from 'react'
 const discover = ({searchParams: {search}} : {searchParams: {search:string}}) => {
     //search param pass proper infomation to api getpodcastsearch
     const podcastData = useQuery(api.podcast.getPodcastBySearch, { search:search || '' })
-    
+
     return (
         <div className='flex flex-col gap-9'>
             <Searchbar />
             <div className='flex flex-col gap-9'>
                 <h1 className='text-20 font-bold text-white-1'>
-                    Discover
+                    {!search ? 'Discover Podcast' : 'Search result for: '}
+                    {search && <span className='text-white-2'>{search}</span>}
                 </h1>
                 {
                     podcastData ? (<>
