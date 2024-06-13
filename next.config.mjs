@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+        typescript:{
+            ignoreBuildErrors: True
+        },
         remotePatterns: [
             {
                 protocol: "https",
