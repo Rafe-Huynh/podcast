@@ -69,15 +69,15 @@ const CreatePodcast = () => {
     async function onSubmit(data: z.infer<typeof formSchema>) {
         try {
             setIsSubmit(true)
+            if(!audioUrl || !imageUrl || !voiceType) {
             toast({
                 title: "please generate audio and image",
                 variant: 'destructive'
               })
               setIsSubmit(false)
-            if (!audioUrl || !imageUrl || !voiceType) {
-                throw new Error('please gnerate audio and image')
+              throw new Error('Please generate audio and image')
             }
-            const podcast = await createPodcast({
+            await createPodcast({
                 podcastTitle: data.podcastTitle,
                 podcastDescription: data.podcastDescription,
                 audioUrl,
@@ -97,10 +97,6 @@ const CreatePodcast = () => {
             router.push("/")
         } catch (error) {
             console.log(error)
-            toast({
-                title: "Error creating a podcast",
-                variant: 'destructive'
-              })
             setIsSubmit(false)
         }
     }

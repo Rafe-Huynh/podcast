@@ -40,10 +40,9 @@ const GenerateThumbnail = (props: GenerateThumbnailProps) => {
       })
     } catch (error) {
       console.log(error)
-      toast({ title: 'Error generating thumbnail', variant: 'destructive' })
     }
   }
-
+  
   const generateImage = async () => {
     try {
       const respone = await handleGenerateThumbnail({ prompt: props.imagePrompt })
@@ -51,9 +50,14 @@ const GenerateThumbnail = (props: GenerateThumbnailProps) => {
       handleImage(blob, `thumbnail-${uuidv4()}`)
     } catch (error) {
       console.log(error)
-      toast({ title: 'Error generating thumbnail', variant: 'destructive' })
     }
 
+  }
+  const handleClick = () => {
+    generateImage()
+    toast({
+      title: "Generating...",
+    })
   }
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -65,7 +69,6 @@ const GenerateThumbnail = (props: GenerateThumbnailProps) => {
       handleImage(blob, file.name)
     } catch (error) {
       console.log(error)
-      toast({ title: 'Error uploading image', variant: 'destructive' })
     }
   }
   return (
@@ -91,7 +94,7 @@ const GenerateThumbnail = (props: GenerateThumbnailProps) => {
               />
             </div>
             <div className='w-full max-w-[200px]'>
-              <Button type="submit" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={generateImage}>
+              <Button type="submit" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={handleClick} >
                 {isImageLoading ? (
                   <>
                     Generating...
