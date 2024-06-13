@@ -7,7 +7,7 @@ import { api } from '@/convex/_generated/api'
 import { useQuery } from 'convex/react'
 import React from 'react'
 
-const discover = ({searchParams: {search}} : {searchParams: {search:string}}) => {
+const Discover = ({searchParams: {search}} : {searchParams: {search:string}}) => {
     //search param pass proper infomation to api getpodcastsearch
     const podcastData = useQuery(api.podcast.getPodcastBySearch, { search:search || '' })
 
@@ -45,4 +45,4 @@ const discover = ({searchParams: {search}} : {searchParams: {search:string}}) =>
     )
 }
 
-export default discover
+export default Discover

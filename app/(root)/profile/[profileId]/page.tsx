@@ -7,7 +7,7 @@ import ProfileCard from '@/components/ProfileCard'
 import PodcastCard from '@/components/PodcastCard'
 import EmptyPodcast from '@/components/EmptyPodcast'
 import { useUser } from '@clerk/nextjs'
-const profile = ({ params }: { params: { profileId: string } }) => {
+const Profile = ({ params }: { params: { profileId: string } }) => {
   const {user} = useUser()
   const isOwner = user?.id === params.profileId
   const auth = useQuery(api.users.getUserById, { clerkId: params.profileId })
@@ -62,4 +62,4 @@ const profile = ({ params }: { params: { profileId: string } }) => {
   )
 }
 
-export default profile
+export default Profile
