@@ -17,7 +17,7 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
   return (
     <section className='mt-6 flex flex-col'>
         <h1 className='text-20 font-bold text-white-1'>
-          Welcome to {auth.name}&#39 Profile
+          Welcome to {auth.name}&#39;s Profile
         </h1>
         <div className="mt-6 flex flex-col gap-6 max-md:items-center md:flex-row">
           <ProfileCard
@@ -53,7 +53,7 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
             buttonText="Create Podcast"
           /> 
           ) : <div className='flex text-20 font-bold text-white-1 justify-center'>
-          {auth.name} doesn&#39; have any podcast
+          {auth.name} doesn&#39;t have any podcast
           
           </div>
         }
