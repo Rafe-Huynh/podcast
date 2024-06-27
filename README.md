@@ -1,11 +1,12 @@
 ⚙️ Tech Stack
-Next.js
-TypeScript
-Convex
-OpenAI
-Clerk
-ShadCN
-Tailwind CSS
+👉 Next.js
+👉 TypeScript
+👉 Convex
+👉 OpenAI
+👉 Clerk
+👉 ShadCN
+👉 Tailwind CSS
+
 🔋 Features
 👉 Robust Authentication: Secure and reliable user login and registration system.
 
