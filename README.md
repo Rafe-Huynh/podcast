@@ -61,3 +61,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+🕸️ Snippets
+app/globals.css
+tailwind.config.ts
+constants/index.ts
+convex/http.ts
+convex/users.ts
+types/index.ts
+convex/podcasts.ts
+components/PodcastDetailPlayer.ts
+components/PodcastPlayer.ts
+lib/formatTime.ts
+lib/useDebounce.ts
+(root)/profile/[profiled]/page.tsx
+componenets/ProfileCard.tsx
