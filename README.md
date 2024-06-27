@@ -1,7 +1,8 @@
-⚙️ Tech Stack
+⚙️ Tech Stack: 
 Next.js, TypeScript, Convex, OpenAI, Clerk, ShadCN, Tailwind CSS
 
-🔋 Features
+🔋 Features:
+
 👉 Robust Authentication: Secure and reliable user login and registration system.
 
 👉 Modern Home Page: Showcases trending podcasts with a sticky podcast player for continuous listening.
