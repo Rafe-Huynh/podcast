@@ -1,5 +1,5 @@
 ⚙️ Tech Stack: 
-Next.js, TypeScript, Convex, OpenAI, Clerk, ShadCN, Tailwind CSS
+-Next.js</br>  -TypeScript</br> -Convex</br> -OpenAI</br> -Clerk</br> -ShadCN</br> -Tailwind CSS
 
 🔋 Features:
 
